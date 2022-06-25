@@ -10,8 +10,8 @@ Recommended to use:
 
 ## Instrucciones
 
-- Clona el resositorio
-- Instala las dependecias utilizando `npm install` o `yarn`
+- Clona el repositorio
+- Instala las dependencias utilizando `npm install` o `yarn`
 
 ## Ejecutar el proyecto
 
@@ -40,7 +40,7 @@ Abra [http://localhost:3000](http://localhost:3000) para verlo en tu navegador.
 
 - Crear un nuevo componente `SecondChallenge` in `src/containers`
 - Usa el array `USERS` del archivo `src/utils.js`, lista de usuarios mostrando su avatar, nombre, apellido y edad.
-- Implementar la funcionabilidad eliminar usuario.
+- Implementar la funcionalidad eliminar usuario.
 - Cree un buscador y filtre por nombre o apellido.
 - Agregar un select que permita ordenar los usuarios por edad de menor a mayor y de mayor a menor.
 
