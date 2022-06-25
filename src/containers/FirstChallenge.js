@@ -1,29 +1,28 @@
 import React from 'react'
-import { Table, TableRow, TableContainer, Paper, TableHead, TableCell, TableBody } from '@mui/material'
+import { Table, TableContainer, Paper, TableHead, TableBody } from '@mui/material'
 import { getGifts } from '../utils'
+import { StyledTableCell, StyledTableRow } from '../utils/mui'
 
 const FirstChallenge = () => {
   const gifts = getGifts()
-  // eslint-disable-next-line no-restricted-syntax
-  console.log('FROM getGifts() ->', gifts)
 
   return (
     <div>
-      <h1>Listado de Regalos [GIFTS])</h1>
+      <h1>Listado de Regalos:</h1>
       <TableContainer component={Paper}>
-        <Table aria-label='simple table' sx={{ minWidth: 640 }}>
+        <Table aria-label='customized table' sx={{ minWidth: 320 }}>
           <TableHead>
-            <TableRow>
-              <TableCell>Regalo</TableCell>
-              <TableCell>Cantidad</TableCell>
-            </TableRow>
+            <StyledTableRow>
+              <StyledTableCell>Regalo</StyledTableCell>
+              <StyledTableCell>Cantidad</StyledTableCell>
+            </StyledTableRow>
           </TableHead>
           <TableBody>
             {Object.entries(gifts).map(([ key, value ]) => (
-              <TableRow key={1}>
-                <TableCell>{key}</TableCell>
-                <TableCell>{value}</TableCell>
-              </TableRow>
+              <StyledTableRow key={1}>
+                <StyledTableCell>{key}</StyledTableCell>
+                <StyledTableCell>{value}</StyledTableCell>
+              </StyledTableRow>
             ))}
           </TableBody>
         </Table>

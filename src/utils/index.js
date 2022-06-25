@@ -43,6 +43,25 @@ export const USERS = [
   }
 ]
 
+export const APP_ROUTES = [
+  {
+    label: 'FIRST',
+    path : '/first'
+  },
+  {
+    label: 'SECOND',
+    path : '/second'
+  },
+  {
+    label: 'THIRD',
+    path : '/third'
+  },
+  {
+    label: 'FOURTH',
+    path : '/fourth'
+  }
+]
+
 export const getGifts = () => {
   const gifts = 'bici coche pelota _playstation bici _coche peluche coche bici'
 

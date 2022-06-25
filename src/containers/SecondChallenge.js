@@ -1,7 +1,8 @@
+import DeleteIcon from '@mui/icons-material/Delete'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { TextField, FormControl, InputLabel, Select, MenuItem, Button, Table, TableRow, TableContainer, Paper, TableHead, TableCell, TableBody } from '@mui/material'
-
+import { TextField, FormControl, InputLabel, Select, MenuItem, Button, Table, TableContainer, Paper, TableHead, TableBody } from '@mui/material'
+import { StyledTableCell, StyledTableRow } from '../../src/utils/mui'
 import { updateUserAction } from '../store/actions/user'
 
 const SecondChallenge = () => {
@@ -36,53 +37,55 @@ const SecondChallenge = () => {
 
   return (
     <div>
-      <h1>Lista de Usuarios:</h1>
+      <h1>Listado de Usuarios:</h1>
       <TextField
         id='outlined-required'
-        label='Búsqueda por nombre'
+        label='Búsqueda por nombre:'
         onChange={(e) => searchByFirstname(e.target.value)}
         sx={{ minWidth: 300 }} />
       <FormControl sx={{ mb: 4, minWidth: 300, ml: 2 }}>
         <InputLabel id='order-age'>Ordenar por edad:</InputLabel>
         <Select
-          label='Ordenar por edad'
+          label='Ordenar por edad:'
           labelId='order-age'
           onChange={(e) => orderByAge(e.target.value)}>
-          <MenuItem value=''>Seleccione</MenuItem>
+          <MenuItem value=''>Elija un valor:</MenuItem>
           <MenuItem value='asc'>De menor a mayor</MenuItem>
           <MenuItem value='desc'>De mayor a menor</MenuItem>
         </Select>
       </FormControl>
       <TableContainer component={Paper}>
-        <Table aria-label='simple table' sx={{ minWidth: 650 }}>
+        <Table aria-label='customized table' sx={{ minWidth: 640 }}>
           <TableHead>
-            <TableRow>
-              <TableCell>Id</TableCell>
-              <TableCell>Avatar</TableCell>
-              <TableCell>Nombre</TableCell>
-              <TableCell>Apellido</TableCell>
-              <TableCell>Edad</TableCell>
-              <TableCell>Acción</TableCell>
-            </TableRow>
+            <StyledTableRow >
+              <StyledTableCell>Id</StyledTableCell>
+              <StyledTableCell>Avatar</StyledTableCell>
+              <StyledTableCell>Nombre</StyledTableCell>
+              <StyledTableCell>Apellido</StyledTableCell>
+              <StyledTableCell>Edad</StyledTableCell>
+              <StyledTableCell>Opciones</StyledTableCell>
+            </StyledTableRow >
           </TableHead>
           <TableBody>
             {users
               .filter(x => x.firstName.toLowerCase().includes(term.toLowerCase()))
               .map((item, index) => (
-                <TableRow key={index}>
-                  <TableCell>{item.id}</TableCell>
-                  <TableCell>
+                <StyledTableRow key={index}>
+                  <StyledTableCell>{item.id}</StyledTableCell>
+                  <StyledTableCell>
                     <img alt='avatar' src={item.avatar} />
-                  </TableCell>
-                  <TableCell>{item.firstName}</TableCell>
-                  <TableCell>{item.lastName}</TableCell>
-                  <TableCell>{item.age}</TableCell>
-                  <TableCell>
-                    <Button color='error' onClick={() => removeUser(item.id)} variant='outlined'>
+                  </StyledTableCell>
+                  <StyledTableCell>{item.firstName}</StyledTableCell>
+                  <StyledTableCell>{item.lastName}</StyledTableCell>
+                  <StyledTableCell>{item.age}</StyledTableCell>
+                  <StyledTableCell>
+                    <Button
+                      onClick={() => removeUser(item.id)} startIcon={<DeleteIcon />}
+                      variant='outlined'>
                       Eliminar
                     </Button>
-                  </TableCell>
-                </TableRow>
+                  </StyledTableCell>
+                </StyledTableRow >
               ))}
           </TableBody>
         </Table>
