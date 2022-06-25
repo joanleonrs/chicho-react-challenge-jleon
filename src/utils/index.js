@@ -47,6 +47,14 @@ export const getGifts = () => {
   const gifts = 'bici coche pelota _playstation bici _coche peluche coche bici'
 
   // your code here
+  const giftsfiltered = gifts
+    .split(' ')
+    .filter(gift => !gift.startsWith('_'))
+    .reduce((previous, current) => {
+      previous[current] = (previous[current] || 0) + 1
 
-  return gifts
+      return previous
+    }, {})
+
+  return giftsfiltered
 }
